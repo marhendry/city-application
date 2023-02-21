@@ -49,7 +49,6 @@ class CityServiceImplTest {
 
     @Test
     public void testGetCityById() {
-        // Arrange
         Long id = 1L;
         City city = new City();
         city.setId(id);
@@ -58,10 +57,8 @@ class CityServiceImplTest {
 
         when(cityRepository.findById(id)).thenReturn(Optional.of(city));
 
-        // Act
         Optional<CityDto> result = cityService.getCityById(id);
 
-        // Assert
         assertTrue(result.isPresent());
         assertEquals(id, result.get().getId());
         assertEquals(city.getName(), result.get().getName());
@@ -70,7 +67,6 @@ class CityServiceImplTest {
 
     @Test
     void findCitiesByName_ReturnsPageOfCityDto() {
-        // Arrange
         String name = "test";
         int page = 0;
         int size = 10;
@@ -79,10 +75,8 @@ class CityServiceImplTest {
         Page<City> cityPage = new PageImpl<>(cities, pageable, cities.size());
         when(cityRepository.findAllByName(name, pageable)).thenReturn(cityPage);
 
-        // Act
         Page<CityDto> result = cityService.findCitiesByName(name, page, size);
 
-        // Assert
         assertEquals(1, result.getContent().size());
         assertEquals(new CityDto(1L, "TestCity", "Photo1"), result.getContent().get(0));
         verify(cityRepository).findAllByName(name, pageable);
@@ -91,7 +85,6 @@ class CityServiceImplTest {
 
     @Test
     public void testUpdateCityById() {
-        // given
         Long id = 1L;
         String name = "Test City";
         String photo = "test_photo";
@@ -100,10 +93,8 @@ class CityServiceImplTest {
 
         when(cityRepository.save(any())).thenReturn(city);
 
-        // Act
         CityDto result = cityService.updateCityById(cityDtoEx);
 
-        // Assert
         assertEquals(id, result.getId());
         assertEquals(name, result.getName());
         assertEquals(photo, result.getPhoto());

@@ -58,7 +58,6 @@ class CityAppControllerTest {
 
     @Test
     public void testGetCitiesByName() {
-        // Создаем тестовые данные
         String testName = "TestCity";
         Page<CityDto> testPage = new PageImpl<>(Arrays.asList(
                 new CityDto(1L, "TestCity1","Photo1"),
@@ -66,32 +65,25 @@ class CityAppControllerTest {
         int testPageNumber = 1;
         int testPageSize = 2;
 
-        // Мокаем вызов метода сервиса
         when(cityService.findCitiesByName(testName, testPageNumber, testPageSize)).thenReturn(testPage);
 
-        // Вызываем метод контроллера и проверяем возвращаемый ответ
         ResponseEntity<Page<CityDto>> responseEntity = cityAppController.getCitiesByName(testName, testPageNumber, testPageSize);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(testPage, responseEntity.getBody());
 
-        // Проверяем, что метод сервиса был вызван один раз с правильными параметрами
         verify(cityService, times(1)).findCitiesByName(testName, testPageNumber, testPageSize);
     }
 
     @Test
     public void testUpdateCityById() {
-        // Создаем тестовые данные
         CityDto testCity = new CityDto(1L, "TestCity","Photo1");
 
-        // Мокаем вызов метода сервиса
         when(cityService.updateCityById(testCity)).thenReturn(testCity);
 
-        // Вызываем метод контроллера и проверяем возвращаемый ответ
         ResponseEntity<CityDto> responseEntity = cityAppController.updateCityBy(testCity);
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals(testCity, responseEntity.getBody());
 
-        // Проверяем, что метод сервиса был вызван один раз с правильными параметрами
         verify(cityService, times(1)).updateCityById(testCity);
     }
 }
