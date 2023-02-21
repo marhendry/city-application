@@ -1,15 +1,18 @@
 package com.andersen.task.city.service;
 
-import com.andersen.task.city.dto.City;
+import com.andersen.task.city.model.dto.CityDto;
 import org.springframework.data.domain.Page;
+
+import java.util.Optional;
 
 public interface CityService {
 
-    Page<City> findAllCities(int page, int size);
+    Page<CityDto> findAllCities(int page, int size);
 
-    Page<City> findCitiesByName(String name, int page, int size);
+    Optional<CityDto> getCityById(Long id);
+    Page<CityDto> findCitiesByName(String name, int page, int size);
 
-    City updateCityById(City city);
+    CityDto updateCityById(CityDto city);
 
-    boolean fillDatabaseFromCsvFile(String filename);
+
 }

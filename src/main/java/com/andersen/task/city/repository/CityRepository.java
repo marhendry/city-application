@@ -1,6 +1,6 @@
 package com.andersen.task.city.repository;
 
-import com.andersen.task.city.dto.City;
+import com.andersen.task.city.model.entity.City;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
