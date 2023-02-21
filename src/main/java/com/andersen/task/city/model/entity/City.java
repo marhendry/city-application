@@ -1,4 +1,4 @@
-package com.andersen.task.city.dto;
+package com.andersen.task.city.model.entity;
 
 import com.opencsv.bean.CsvBindByPosition;
 import lombok.AllArgsConstructor;
