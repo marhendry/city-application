@@ -7,6 +7,7 @@ The initial list of cities is populated using the attached cities.csv file. City
 -Maven build system
 -H2 database
 -springframework security
+- Docker
 ## How to Use
 Users can browse the city list by navigating to the root endpoint ("/"). To search for a city by name, users can navigate to "/search" and provide a query parameter "name" with the name of the city.
 To edit a city, users must have the role ROLE_ALLOW_EDIT and provide login credentials. The login credentials for the user with the required role are:
@@ -24,7 +25,13 @@ The application uses Spring Security for authentication and authorization. The o
 The application uses an H2 database to store the list of cities and their photos. The database is pre-populated with the data from the attached cities.csv file.
 ## Run Locally
 The application may be run locally by means of the following command:
+To run a Java Spring Boot project with a H2 database inside a Docker container, follow these steps:
+####    - Open the terminal and navigate to the root directory of the project where the Dockerfile is located.
+####    - Build the Docker image by running the following command:
+######            docker-compose up
+This command will start a new Docker container based on the city-application image and map port 8080 of the container to port 8080 of the host machine.
+####    - Finally, start the Spring Boot application by running the following command (if Maven :
+######            mvn spring-boot:run
+This command will start the Spring Boot application inside the Docker container using Maven.
 
-mvn spring-boot:run
-
-The application will start and be accessible at http://localhost:8080.
+The application will be accessible at http://localhost:8080.
