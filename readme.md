@@ -28,10 +28,10 @@ The application may be run locally by means of the following command:
 To run a Java Spring Boot project with a H2 database inside a Docker container, follow these steps:
 ####    - Open the terminal and navigate to the root directory of the project where the Dockerfile is located.
 ####    - Build the Docker image by running the following command:
-######            docker-compose up
+######            docker build -t city-application:0.0.1 .
 This command will start a new Docker container based on the city-application image and map port 8080 of the container to port 8080 of the host machine.
-####    - Finally, start the Spring Boot application by running the following command (if Maven :
-######            mvn spring-boot:run
-This command will start the Spring Boot application inside the Docker container using Maven.
+####    - Finally, run docker container with the following command:
+######            docker run -d -p 8080:8080 -t city-application:0.0.1
+This command will start the Spring Boot application inside the Docker container.
 
 The application will be accessible at http://localhost:8080.

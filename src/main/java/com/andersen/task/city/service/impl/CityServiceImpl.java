@@ -14,8 +14,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +30,11 @@ public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
 
     @PostConstruct
-    public void init() throws FileNotFoundException {
-        final List<City> cityList = new CsvToBeanBuilder<City>(new FileReader("src/main/resources/cities.csv"))
+    public void init() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("cities.csv");
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        final List<City> cityList = new CsvToBeanBuilder<City>(inputStreamReader)
                 .withSeparator(',')
                 .withType(City.class)
                 .build()

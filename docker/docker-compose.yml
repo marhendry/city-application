@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  h2-db:
-    image: oscarfonts/h2
-    environment:
-      - H2_OPTIONS=-ifNotExists
-    ports:
-      - "8080:8080"
