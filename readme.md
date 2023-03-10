@@ -3,10 +3,10 @@ This is an enterprise-grade city list application built using Spring Boot and Ma
 
 The initial list of cities is populated using the attached cities.csv file. City addition, deletion, and sorting are not in the scope of this task.
 ## Technical Stack
--Spring Boot
--Maven build system
--H2 database
--springframework security
+- Spring Boot
+- Maven build system
+- H2 database
+- springframework security
 - Docker
 ## How to Use
 Users can browse the city list by navigating to the root endpoint ("/"). To search for a city by name, users can navigate to "/search" and provide a query parameter "name" with the name of the city.
@@ -16,9 +16,9 @@ Login: username
 Password: password
 
 ## Available Endpoints
--GET / - Retrieves the paginated list of cities with corresponding photos
--GET /search?name={cityName} - Retrieves the cities that match the given name query
--PUT /edit/{cityId} - Edits the city with the given id, requires ROLE_ALLOW_EDIT role and login credentials.
+- GET / - Retrieves the paginated list of cities with corresponding photos
+- GET /search?name={cityName} - Retrieves the cities that match the given name query
+- PUT /edit/{cityId} - Edits the city with the given id, requires ROLE_ALLOW_EDIT role and login credentials.
 ## Security
 The application uses Spring Security for authentication and authorization. The only user with the ROLE_ALLOW_EDIT role is the one with the login credentials mentioned above. All other users have read-only access to the city list.
 ## Database
