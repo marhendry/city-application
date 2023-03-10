@@ -46,7 +46,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public Page<CityDto> findAllCities(int page, int size) {
-        return cityRepository.findAll(PageRequest.of(page, size)).map(cityMapper::ToCityDto);
+        return cityRepository.findAll(PageRequest.of(page, size)).map(cityMapper::toCityDto);
     }
 
     @Override
@@ -57,11 +57,11 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public Page<CityDto> findCitiesByName(String name, int page, int size) {
-        return cityRepository.findAllByName(name, PageRequest.of(page, size)).map(cityMapper::ToCityDto);
+        return cityRepository.findAllByName(name, PageRequest.of(page, size)).map(cityMapper::toCityDto);
     }
 
     @Override
     public CityDto updateCityById(CityDto city) {
-        return cityMapper.ToCityDto(cityRepository.save(cityMapper.toCityEntity(city)));
+        return cityMapper.toCityDto(cityRepository.save(cityMapper.toCityEntity(city)));
     }
 }
